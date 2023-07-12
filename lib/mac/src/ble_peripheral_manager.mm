@@ -49,6 +49,13 @@
 
 - (void)startAdvertisingIBeacon:(NSData *)data {
     NSLog(@"startAdvertisingIBeacon:%@", data);
+    if (self.peripheralManager.isAdvertising) {
+        return;
+    }
+
+    NSString *beaconKey = @"kCBAdvDataAppleBeaconKey";
+    NSDictionary *advertisement = [NSDictionary dictionaryWithObject:data forKey:beaconKey];
+    [self.peripheralManager startAdvertising:advertisement];
 }
 
 - (void)startAdvertisingWithEIRData:(NSData *)data {

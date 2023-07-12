@@ -6,6 +6,7 @@
 //
 #include "bleno_mac.h"
 
+#include "beacon.h"
 #include "napi_objc.h"
 
 #define THROW(msg) \
@@ -81,6 +82,24 @@ Napi::Value BlenoMac::StartAdvertising(const Napi::CallbackInfo& info) {
 // startAdvertisingIBeacon(iBeaconData)
 Napi::Value BlenoMac::StartAdvertisingIBeacon(const Napi::CallbackInfo& info) {
     NSLog(@"BlenoMac::StartAdvertisingIBeacon");
+
+    CHECK_MANAGER();
+    ARG1(Buffer);
+    // ARG4(String, Number, Number, Number);
+
+    // auto proximityUUID = napiToUuid(info[0].As<Napi::String>());
+    // auto major = napiToNumber(info[1].As<Napi::Number>());
+    // auto minor = napiToNumber(info[2].As<Napi::Number>());
+    // auto measuredPower = napiToNumber(info[3].As<Napi::Number>());
+
+    // BLEBeaconAdvertisement *adv = [[BLEBeaconAdvertisement alloc] initWithProximityUUID:proximityUUID
+    //                                                                                major:[major unsignedShortValue]
+    //                                                                                minor:[minor unsignedShortValue]
+    //                                                                        measuredPower:[measuredPower unsignedCharValue]];
+
+    // [peripheralManager startAdvertisingIBeacon:adv.beaconData];
+    auto beaconData = napiToData(info[0].As<Napi::Buffer<Byte>>());
+    [ peripheralManager startAdvertisingIBeacon:beaconData ];
 
     return Napi::Value();
 }

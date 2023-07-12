@@ -32,6 +32,11 @@ NSArray* napiToUuidArray(Napi::Array array) {
     return serviceUuids;
 }
 
+NSUUID* napiToUuid(Napi::String string) {
+    NSString * uuid = napiToUuidString(string);
+    return [[NSUUID alloc] initWithUUIDString:uuid];
+}
+
 NSData* napiToData(Napi::Buffer<Byte> buffer) {
     return [NSData dataWithBytes:buffer.Data() length:buffer.Length()];
 }

@@ -2,7 +2,7 @@
   'targets': [
     {
       'target_name': 'binding',
-      'sources': [ 'src/bleno_mac.mm', 'src/napi_objc.mm', 'src/ble_peripheral_manager.mm', 'src/objc_cpp.mm', 'src/callbacks.mm'  ],
+      'sources': [ 'src/bleno_mac.mm', 'src/napi_objc.mm', 'src/ble_peripheral_manager.mm', 'src/objc_cpp.mm', 'src/callbacks.mm', 'src/beacon.mm'  ],
       'include_dirs': ["<!@(node -p \"require('node-addon-api').include\")", "<!@(node -p \"require('napi-thread-safe-callback').include\")"],
       'dependencies': ["<!(node -p \"require('node-addon-api').gyp\")"],
       'cflags!': [ '-fno-exceptions' ],

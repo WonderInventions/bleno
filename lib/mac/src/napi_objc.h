@@ -25,6 +25,7 @@ std::map<Napi::String, Napi::Object> napiArrayToUUIDEmitters(Napi::Array service
 NSString *napiToString(Napi::String string);
 NSString* napiToUuidString(Napi::String string);
 NSArray* napiToUuidArray(Napi::Array array);
+NSUUID* napiToUuid(Napi::String string);
 NSData* napiToData(Napi::Buffer<Byte> buffer);
 NSNumber* napiToNumber(Napi::Number number);
 NSArray<NSString *> *napiToStringArray(Napi::Array array);
